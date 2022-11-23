@@ -12,6 +12,7 @@ export const Button = styled.button`
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
 padding: 0.5rem 1rem;
+  cursor: pointer;
 `
 export const Menu = styled.details`
 
@@ -21,7 +22,7 @@ export const Menu = styled.details`
   border: 1px solid #D1D5DB;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
-
+position: relative;
 summary {
   height: 100%;
   width: 100%;
@@ -39,7 +40,8 @@ summary {
     border-radius: 6px;
     width: 100%;
     padding: 1rem 2rem;
-    
+    position: absolute;
+    z-index: 3;
     option {
       padding: 0.5rem 0;
       cursor: pointer;
