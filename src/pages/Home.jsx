@@ -1,4 +1,4 @@
-import {Button, Header, Menu, PageContainer, SeedInput, SchemeContainer, ColorContainer} from "../components/styles/styledComponents"
+import {Button, Header, Menu, PageContainer, SeedInput, SchemeContainer, ColorContainer, ColorNames} from "../components/styles/styledComponents"
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 export const Home = () => {
 
@@ -35,6 +35,13 @@ export const Home = () => {
                 <ColorContainer  bgColor='#C47AC0'/>
                 <ColorContainer  bgColor='#E39EC1'/>
                 <ColorContainer  bgColor='#DEBAC0'/>
+                <ColorNames>
+                    <span>#2F323A</span>
+                    <span>#77567A</span>
+                    <span>#C47AC0</span>
+                    <span>#E39EC1</span>
+                    <span>#DEBAC0</span>
+                </ColorNames>
             </SchemeContainer>
 
         </PageContainer>

@@ -65,6 +65,7 @@ export const SchemeContainer = styled.section`
   background-color: aqua;
   height: calc(100vh - 5.6rem);
   display: flex;
+  position: relative;
 `
 
 export const ColorContainer = styled.div`
@@ -78,4 +79,15 @@ export const ColorNames = styled.div`
   border: 1px solid #D1D5DB;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   height: 2.8rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+  span {
+    width: calc(100% / 5);
+    text-align: center;
+  }
 `
