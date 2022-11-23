@@ -3,67 +3,69 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import axios from "axios";
 import {useState} from "react";
 export const Home = () => {
-    const [seed, setSeed] = useState('')
-    const [mode, setMode] = useState('')
-    const [colors, setColors] = useState([])
+    const [mode, setMode] = useState('monochrome');
+    const [seed, setSeed] = useState('#2f323a')
+    const [scheme, setColors] = useState([
+        {hex: {value: '#2f323a'}},
+        {hex: {value: '#77567a'}},
+        {hex: {value: '#c47ac0'}},
+        {hex: {value: '#e39ec1'}},
+        {hex: {value: '#debac0'}}
+])
 
 
     async function getColor() {
         try {
             const response = await axios.get(` https://www.thecolorapi.com/scheme?hex=${seed}&mode=${mode}&count=5`);
-           setColors(response.data.colors)
+            setColors(response.data.colors)
         } catch (error) {
             console.error(error);
         }
     }
 
 
-    function themeHandler(e){
-
-        setMode(e.target.value)
-        console.log(mode)
-        console.log(e.target.value)
+   function handleChange(e) {
+        const {value, name} = e.target
+        name === 'seed' ? setSeed(value.slice(1)) :
+            setMode(value)
     }
-    function seedHandler(e) {
-        setSeed(e.target.value.slice(1))
-
-        console.log(seed)
+    function handleSubmit(e) {
+        e.preventDefault()
+        getColor()
     }
     return (
         <PageContainer>
-            <Header>
-                <SeedInput type='color' onChange={(e) => seedHandler(e)}/>
+            <Header onSubmit={(e) => handleSubmit(e)}>
+
+                <SeedInput type='color' name='seed' onChange={handleChange} />
                 <Menu>
 
-                    <summary>choose a theme <KeyboardArrowDownIcon/></summary>
-
-                    <div onClick={(e) => themeHandler(e)} >
-
-                        <option value="monochrome">Monochrome
-                        </option>
+                 <summary>{mode} <KeyboardArrowDownIcon/></summary>
+                    <div onClick={handleChange} >
+                        <option value="monochrome">Monochrome</option>
                         <option value="monochrome-dark">Monochrome-dark</option>
                         <option value="monochrome-light">Monochrome-light</option>
                         <option value="analogic">Analogic</option>
                         <option value="complement">Complement</option>
-                        <option value="Analogic-complement">Analogic-complement</option>
-                        <option value="Triad">Triad</option>
+                        <option value="analogic-complement">Analogic-complement</option>
+                        <option value="triad">Triad</option>
                     </div>
 
                 </Menu>
-                <Button onClick={getColor}>Get Color Scheme</Button>
+                <Button >Get Color Scheme</Button>
             </Header>
 
             <SchemeContainer>
                 {
-                    colors.map((color) =>
-                        <ColorContainer  bgColor={color.hex.value}/>
+                   scheme.map((color, index) =>
+                        <ColorContainer  key={index} bgColor={color.hex.value}/>
                     )
                 }
 
                 <ColorNames>
                     {
-                        colors.map((color) =>
-                            <span  >{color.hex.value}</span>
+                     scheme.map((color, index) =>
+                            <span key={index} >{color.hex.value}</span>
                         )
                     }
                 </ColorNames>

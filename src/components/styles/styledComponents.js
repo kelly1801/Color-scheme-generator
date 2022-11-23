@@ -49,7 +49,7 @@ summary {
     
   }
 `
-export const Header = styled.header`
+export const Header = styled.form`
 height: 5.6rem;
   width: 100%;
   background-color: #ffffff;
@@ -59,7 +59,14 @@ height: 5.6rem;
   gap: 0.5rem;
   padding: 0.5rem;
   align-items: center;
-  box-shadow: 0 4px 11px rgba(0, 0, 0, 0.15)
+  box-shadow: 0 4px 11px rgba(0, 0, 0, 0.15);
+
+@media (max-width: 465px) {
+ button {
+   padding: 0;
+ }
+  
+}
 `
 export const SchemeContainer = styled.section`
 
@@ -68,6 +75,14 @@ export const SchemeContainer = styled.section`
   height: calc(100vh - 5.6rem);
   display: flex;
   position: relative;
+
+  @media (max-width: 465px) {
+ 
+    flex-direction: column;
+    div {
+      width: 100%;
+    }
+    }
 `
 
 export const ColorContainer = styled.div`
@@ -91,5 +106,10 @@ export const ColorNames = styled.div`
   span {
     width: calc(100% / 5);
     text-align: center;
+  }
+
+  @media (max-width: 465px) {
+display: none;
+    
   }
 `
